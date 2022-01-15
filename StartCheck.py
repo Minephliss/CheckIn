@@ -34,7 +34,7 @@ def pageCount(driver: WebDriver):
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
-wd = webdriver.Chrome(r'E:\ChromeDriver\chromedriver.exe', options=chrome_options)
+wd = webdriver.Chrome(r'/home/cust/workstation/Chrome/chromedriver', options=chrome_options)
 wd.implicitly_wait(2)
 
 wd.get('http://zhxg.shzu.edu.cn/gbi/app/4fdf48dc797943b7bf9c207fb7bf6fce.ghtml?_hd=no&appback=yes')
@@ -56,9 +56,12 @@ time.sleep(0.3)
 wd.find_element(By.ID, 'btn-query-submit').click()
 time.sleep(0.3)
 
+print('Time Set Complete')
+
 res_list = []
 
 while pageCount(wd):
+    print('hello')
     try:
         tex = wd.find_elements(By.TAG_NAME, 'tbody')[1].text.find('机械')
     except:
